@@ -1,23 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useRef, useState } from "react";
+import "./App.css";
+import Countries from "./components/Countries";
+import Header from "./components/Header";
+import Search from "./components/Search";
 
 function App() {
+  let allCountriesData = useRef();
+  const [theme, setTheme] = useState(localStorage.getItem("theme"));
+  const [requiredCountriesDataToShow, setRequiredCountriesDataToShow] =
+    useState([]);
+
+  useEffect(() => {
+    async function fetchAllCountriesData() {
+      const url = "https://restcountries.com/v3.1/all";
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
+      });
+      const data = await response.json();
+      allCountriesData.current = data;
+      setRequiredCountriesDataToShow(data);
+    }
+    fetchAllCountriesData().catch((error) => {
+      console.log(error);
+    });
+  }, []);
+
+  const themeChanger = () => {
+    if (theme === "darkMode") {
+      setTheme("lightMode");
+      localStorage.setItem("theme", "lightMode");
+    } else {
+      setTheme("darkMode");
+      localStorage.setItem("theme", "darkMode");
+    }
+  };
+
+  const themeDetails = {
+    theme,
+    themeChanger,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`app ${theme === "darkMode" ? "dark-theme" : ""}`}>
+      <Header webTheme={theme} changeTheme={themeChanger} />
+      <main>
+        <Search
+          allCountriesDataInfo={allCountriesData.current}
+          visibleCountriesDataShowingFunction={setRequiredCountriesDataToShow}
+        />
+        <Countries
+          visibleCountriesData={requiredCountriesDataToShow}
+          themeDetails={themeDetails}
+        />
+      </main>
     </div>
   );
 }

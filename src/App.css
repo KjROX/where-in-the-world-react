@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -30,6 +31,8 @@ header {
   position: sticky;
   top: 0;
   background-color: var(--elements-color);
+  transition: all 0.3s ease-in-out;
+  z-index: 20;
 }
 .head {
   width: 90%;
@@ -39,6 +42,7 @@ header {
   align-items: center;
   justify-content: space-between;
   color: var(--text-color);
+  transition: all 0.3s ease-in-out;
 }
 .theme {
   display: flex;
@@ -52,6 +56,8 @@ header {
 }
 main {
   background-color: var(--background-color);
+  transition: all 0.3s ease-in-out;
+
   min-height: 90vh;
   padding: 3rem 0rem;
 }
@@ -66,6 +72,8 @@ main {
   display: flex;
   align-items: center;
   background-color: var(--elements-color);
+  transition: all 0.3s ease-in-out;
+
   width: 100%;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1), 0px 5px 5px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -85,9 +93,12 @@ main {
   border-radius: 5px;
   color: var(--text-color-input);
   background-color: var(--elements-color);
+  transition: all 0.3s ease-in-out;
 }
 .search-input input::placeholder {
   color: var(--text-color-input);
+  transition: all 0.3s ease-in-out;
+
   opacity: 1;
 }
 .select-options {
@@ -109,12 +120,15 @@ main {
   cursor: pointer;
   background-color: var(--elements-color);
   color: var(--text-color);
+  transition: all 0.3s ease-in-out;
 }
 .select-options::after {
   content: "\25BC";
   position: absolute;
   background: var(--elements-color);
   color: var(--text-color);
+  transition: all 0.3s ease-in-out;
+
   top: 0;
   right: 0;
   padding: 1.5rem 1rem;
@@ -148,6 +162,7 @@ main {
   cursor: pointer;
   background-color: var(--elements-color);
   color: var(--text-color);
+  transition: all 0.3s ease-in-out;
 }
 .flag {
   width: 100%;
@@ -173,49 +188,21 @@ main {
   padding-left: 1rem;
   font-weight: 600;
   color: var(--text-color-input);
-}
-.more-button {
-  width: 100%;
-  margin: 2rem 0rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.more-button button.not-visible {
-  display: none;
-}
-.more-button button.fade {
-  opacity: 0.5;
-  pointer-events: none;
-}
-.more-button button {
-  background-color: #4a4483;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  cursor: pointer;
-}
-.more-button button:hover {
-  border: 2px solid grey;
+  transition: all 0.3s ease-in-out;
 }
 .modal-outer {
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
   background-color: var(--background-color);
-  z-index: 10;
+  transition: all 0.3s ease-in-out;
+
+  height: 100vh;
   opacity: 1;
   pointer-events: all;
+  padding: 4rem 0rem;
 }
-.modal-outer.open {
-  opacity: 1;
-  pointer-events: all;
-}
+
 .escape-div {
   width: 90%;
-  margin: 3rem auto;
+  margin: 0rem auto;
 }
 .escape-div button {
   display: flex;
@@ -227,6 +214,7 @@ main {
   cursor: pointer;
   background: var(--elements-color);
   color: var(--text-color);
+  transition: all 0.3s ease-in-out;
 }
 .modal-inner {
   width: 90%;
@@ -250,6 +238,7 @@ main {
 }
 .description h1 {
   color: var(--text-color);
+  transition: all 0.3s ease-in-out;
 }
 .name-details-parent {
   display: flex;
@@ -258,6 +247,7 @@ main {
   font-size: 1.3rem;
   line-height: 2.5rem;
   color: var(--text-color);
+  transition: all 0.3s ease-in-out;
 }
 .border-countries {
   display: flex;
@@ -271,6 +261,7 @@ main {
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1), 0px 5px 5px rgba(0, 0, 0, 0.1);
   background: white;
   border: 1px solid rgba(128, 128, 128, 0.5);
+  transition: all 0.3s ease-in-out;
 }
 @media (min-width: 600px) {
   .countries {

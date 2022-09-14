@@ -1,13 +1,12 @@
-import { useState } from "react";
-import CountryDetail from "./CountryDetail";
+import { useNavigate } from "react-router-dom";
 const Country = (props) => {
-  const { eachCountryInfo, themeDetails } = props;
-  const [checkDetails, setCheckDetails] = useState(false);
-  const clickHandlerForEachCountry = () => {
-    setCheckDetails(true);
-  };
-  const onClickingBackHandler = () => {
-    setCheckDetails(false);
+  const { eachCountryInfo } = props;
+  const navigate = useNavigate();
+
+  const clickHandlerForEachCountry = (event) => {
+    const countryName =
+      event.currentTarget.lastElementChild.firstElementChild.textContent;
+    navigate(`/countries/${countryName}`);
   };
 
   return (
@@ -36,13 +35,6 @@ const Country = (props) => {
           </div>
         </div>
       </div>
-      {checkDetails && (
-        <CountryDetail
-          eachCountryDetail={eachCountryInfo}
-          onBack={onClickingBackHandler}
-          themeDetails={themeDetails}
-        />
-      )}
     </>
   );
 };

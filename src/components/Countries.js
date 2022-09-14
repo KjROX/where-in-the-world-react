@@ -1,17 +1,11 @@
 import Country from "./Country";
 
 const Countries = (props) => {
-  const { visibleCountriesData, themeDetails } = props;
+  const { visibleCountriesData } = props;
   return (
     <div className="countries">
       {visibleCountriesData.map((eachCountry, index) => {
-        return (
-          <Country
-            eachCountryInfo={eachCountry}
-            key={index}
-            themeDetails={themeDetails}
-          />
-        );
+        return <Country eachCountryInfo={eachCountry} key={index} />;
       })}
     </div>
   );

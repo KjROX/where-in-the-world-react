@@ -3,7 +3,8 @@ import { useState } from "react";
 import "./App.css";
 import CountriesPage from "./pages/CountriesPage";
 import Header from "./components/Header";
-import CountryDetailPage from "./pages/CountryDetailPage";
+import CountryDetailPage from "./pages/EachCountryPage";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme"));
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Navigate replace to="/countries" />} />
         <Route path="/countries" element={<CountriesPage />} />
         <Route path="/countries/:id" element={<CountryDetailPage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );

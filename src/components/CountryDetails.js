@@ -1,31 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-
-const CountryDetailPage = () => {
-  const countryName = useParams().id;
-  const [countryInfo, setCountryInfo] = useState();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    async function fetchCountryByName(name) {
-      const url = `https://restcountries.com/v3.1/name/${name}`;
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-        },
-      });
-      const data = await response.json();
-      setCountryInfo(data[0]);
-    }
-    fetchCountryByName(countryName).catch((error) => {
-      console.log(error);
-    });
-  }, [countryName]);
-
-  const clickHandler = () => {
-    navigate(-1);
-  };
+const CountryDetails = (props) => {
+  const { countryInfo, backKeyClickHandler } = props;
 
   const capital = countryInfo?.capital ? countryInfo.capital[0] : "undefined";
   const ifCurrencyExists = countryInfo?.currencies
@@ -44,11 +18,10 @@ const CountryDetailPage = () => {
   const languages = countryInfo?.languages
     ? Object.values(countryInfo.languages).join(", ")
     : "undefined";
-
   return (
     <div className="modal-outer">
       <div className="escape-div">
-        <button onClick={clickHandler} className="escape">
+        <button onClick={backKeyClickHandler} className="escape">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -108,4 +81,4 @@ const CountryDetailPage = () => {
     </div>
   );
 };
-export default CountryDetailPage;
+export default CountryDetails;
